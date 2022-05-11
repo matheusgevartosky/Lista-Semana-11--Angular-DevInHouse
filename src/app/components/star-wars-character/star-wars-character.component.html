@@ -1,0 +1,15 @@
+<table class="table table-hover table-striped">
+  <thead>
+      <td>#</td>
+      <td>Nome: </td>
+      <td>Departamento: </td>
+  </thead>
+  <tbody>
+      <tr *ngFor="let char of personagem">
+          <td>{{char.id}}</td>
+          <td>{{char.nome}}</td>
+          <td>{{char.avatar}}</td>
+      </tr>
+  </tbody>
+</table>
+
