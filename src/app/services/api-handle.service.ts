@@ -28,5 +28,14 @@ export class ApiHandleService {
     })
   }
 
+ public getById(data:any){
+    return this._http.get(this.url+'/'+data)
+  }
+
+  update(id:any, data:any): Observable<any>{
+    return this._http.put(`${this.url}/${id}`, data)
+  }
+
+
 
 }

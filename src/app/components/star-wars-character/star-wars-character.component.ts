@@ -12,12 +12,13 @@ import { ApiHandleService } from 'src/app/services/api-handle.service';
 export class StarWarsCharacterComponent implements OnInit {
   public personagem: StarWarsCharacter[] = []
   public allChar: CharacterInterface[] = []
+  public data!: CharacterInterface[]
+
 
   constructor(private _api: ApiHandleService) { }
 
   ngOnInit(): void {
     this.getAllCharacters()
-    this.pegarTodos()
   }
 
   public getAllCharacters(){
@@ -41,6 +42,20 @@ export class StarWarsCharacterComponent implements OnInit {
       const DATA = await this._api.obterTodos();
       this.allChar = DATA
       console.log(this.allChar)
+    }
+
+    getById() {
+      this._api.getById(1).subscribe((data:any) => {
+        this.data = data;
+        console.log(this.data)
+      })
+    }
+
+    update(){
+      this._api.update(6, 'teste').subscribe((data:any) =>{
+        this.data = data;
+        console.log(this.data)
+      })
     }
 
 
