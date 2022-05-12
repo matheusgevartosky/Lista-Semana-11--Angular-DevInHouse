@@ -1,38 +1,46 @@
 <div class="main">
-  <div class="cardContainer">
-    <div class="Card">
-      
+  <button class="btn btn-secondary btn-lg" (click)="showForm()">Editar Cards</button>
+  <div *ngIf="controller">
+    <div class="formContainer" *ngIf="controller">
+      <form [formGroup]="form">
+        <label for="id">id</label>
+        <input formControlName="id" class="form-control form-control-lg" type="number" placeholder="Digite o Id do Personagem">
+        <label for="nome">nome</label>
+        <input formControlName="nome" class="form-control form-control-lg" type="text"
+          placeholder="Digite o Nome do Personagem">
+        <label for="nome">Habilidade</label>
+        <input formControlName="habilidade" class="form-control form-control-lg" type="text"
+          placeholder="Digite as Habilidades do Personagem">
+        <label for="nome">planeta</label>
+        <input formControlName="planeta" class="form-control form-control-lg" type="text"
+          placeholder="Digite o Planeta do Personagem">
+        <label for="nome">armas</label>
+        <input formControlName="armas" class="form-control form-control-lg" type="text"
+          placeholder="Digite as Armas do Personagem">
+        <label for="nome">avatar</label>
+        <input formControlName="avatar" class="form-control form-control-lg" type="text"
+          placeholder="Insira o Avatar do Personagem">
+      </form>
     </div>
-  </div>
-
-  <div class="formContainer">
-    <form [formGroup]="form">
-      <label for="id">id</label>
-      <input formControlName="id" class="form-control form-control-lg" type="number" placeholder="Seu nome">
-      <label for="nome">nome</label>
-      <input formControlName="nome" class="form-control form-control-lg" type="text" placeholder="Seu Sobrenome">
-      <label for="nome">Habilidade</label>
-      <input formControlName="habilidade" class="form-control form-control-lg" type="text" placeholder="id que será alterado">
-      <label for="nome">planeta</label>
-      <input formControlName="planeta" class="form-control form-control-lg" type="text" placeholder="id que será alterado">
-      <label for="nome">armas</label>
-      <input formControlName="armas" class="form-control form-control-lg" type="text" placeholder="id que será alterado">
-      <label for="nome">avatar</label>
-      <input formControlName="avatar" class="form-control form-control-lg" type="text" placeholder="id que será alterado">
-    </form>
     <div class="d-flex justify-content-evenly">
       <button class="btn btn-outline-secondary" (click)="getById()">Buscar Por ID</button>
       <button class="btn btn-outline-secondary" (click)="update()">Fazer update</button>
       <button class="btn btn-outline-secondary" (click)="CriaPersonagem()">Cria Personagem</button>
       <button class="btn btn-outline-secondary" (click)="DeletaPersonagem()">Remover Personagem</button>
     </div>
-  
   </div>
-  
+  <div class="cardContainer">
+    <div class="Card" *ngFor="let item of personagem">
+      <img src="{{item.avatar}}">
+      <h1>{{item.nome | titlecase}}</h1>
+
+      <p><b>Habilidade: </b> {{item.habilidade}}</p>
+      <p><b>Planeta: </b> {{item.planeta}}</p>
+      <p><b>Armas: </b> {{item.armas}}</p>
+    </div>
+  </div>
+
+
+
+
 </div>
-
-
-
-
-
-
