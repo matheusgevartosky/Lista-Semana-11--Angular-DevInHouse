@@ -1,22 +1,38 @@
-<table class="table table-hover table-striped">
-  <thead>
-      <td>#</td>
-      <td>Nome: </td>
-      <td>Departamento: </td>
-  </thead>
-  <tbody>
-      <tr *ngFor="let char of personagem">
-          <td>{{char.id}}</td>
-          <td>{{char.nome}}</td>
-          <td>{{char.avatar}}</td>
-      </tr>
-  </tbody>
-</table>
+<div class="main">
+  <div class="cardContainer">
+    <div class="Card">
+      
+    </div>
+  </div>
+
+  <div class="formContainer">
+    <form [formGroup]="form">
+      <label for="id">id</label>
+      <input formControlName="id" class="form-control form-control-lg" type="number" placeholder="Seu nome">
+      <label for="nome">nome</label>
+      <input formControlName="nome" class="form-control form-control-lg" type="text" placeholder="Seu Sobrenome">
+      <label for="nome">Habilidade</label>
+      <input formControlName="habilidade" class="form-control form-control-lg" type="text" placeholder="id que será alterado">
+      <label for="nome">planeta</label>
+      <input formControlName="planeta" class="form-control form-control-lg" type="text" placeholder="id que será alterado">
+      <label for="nome">armas</label>
+      <input formControlName="armas" class="form-control form-control-lg" type="text" placeholder="id que será alterado">
+      <label for="nome">avatar</label>
+      <input formControlName="avatar" class="form-control form-control-lg" type="text" placeholder="id que será alterado">
+    </form>
+    <div class="d-flex justify-content-evenly">
+      <button class="btn btn-outline-secondary" (click)="getById()">Buscar Por ID</button>
+      <button class="btn btn-outline-secondary" (click)="update()">Fazer update</button>
+      <button class="btn btn-outline-secondary" (click)="CriaPersonagem()">Cria Personagem</button>
+      <button class="btn btn-outline-secondary" (click)="DeletaPersonagem()">Remover Personagem</button>
+    </div>
+  
+  </div>
+  
+</div>
 
 
-<button (click)="pegarTodos()">Pegar Todos</button>
-<button (click)="getById()">teste</button>
-<button (click)="update()">teste</button>
-<button (click)="getById()">teste</button>
-<button (click)="getById()">teste</button>
+
+
+
 
