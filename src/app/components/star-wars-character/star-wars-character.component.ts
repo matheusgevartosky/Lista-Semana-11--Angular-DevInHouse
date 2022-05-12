@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { StarWarsCharacter } from 'src/app/classes/star-wars-character';
 import { CharacterInterface } from 'src/app/interfaces/character-interface';
 import { ApiHandleService } from 'src/app/services/api-handle.service';
@@ -10,32 +11,36 @@ import { ApiHandleService } from 'src/app/services/api-handle.service';
   styleUrls: ['./star-wars-character.component.scss']
 })
 export class StarWarsCharacterComponent implements OnInit {
-  public personagem: StarWarsCharacter[] = []
+  public personagem!: CharacterInterface[]
   public allChar: CharacterInterface[] = []
   public data!: CharacterInterface[]
+  public controller:boolean = false
+
+  public form:FormGroup = this.fb.group({
+    id:[],
+    nome:[''],
+    habilidade: [''],
+    planeta: [''],
+    armas: [''],
+    avatar: ['']
+  })
 
 
-  constructor(private _api: ApiHandleService) { }
+  constructor(private _api: ApiHandleService, private fb:FormBuilder) { }
 
   ngOnInit(): void {
     this.getAllCharacters()
   }
 
   public getAllCharacters(){
+    this.controller = false
+
     this._api.getPersonagens()
     .subscribe(
       retorno =>{
-        this.personagem = retorno.map(char =>{
-          return new StarWarsCharacter(
-            char.id,
-            char.nome,
-            char.habilidade,
-            char.armas,
-            char.planeta,
-            char.avatar
-          )
-        })
+        this.personagem = retorno
       }
+
     )}
 
     async pegarTodos(){
@@ -49,14 +54,27 @@ export class StarWarsCharacterComponent implements OnInit {
         this.data = data;
         console.log(this.data)
       })
+      this.getAllCharacters()
     }
 
-    update(){
-      this._api.update(6, 'teste').subscribe((data:any) =>{
-        this.data = data;
-        console.log(this.data)
-      })
+    update(): void {
+      console.log(this.form.value)
+      this._api.update(this.form.value.id, this.form.value)
+        .subscribe();
+        location.reload()}
+
+    CriaPersonagem(){
+      this._api.create(this.form.value)
+      .subscribe();
+      location.reload()
     }
 
+    DeletaPersonagem(){
+      this._api.delete(this.form.value.id).subscribe();
+      location.reload()
+    }
 
+    showForm(){
+      this.controller = !this.controller
+    }
 }

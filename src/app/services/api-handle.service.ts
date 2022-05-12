@@ -1,3 +1,4 @@
+
 import { Observable } from 'rxjs';
 import { environment } from './../../environments/environment';
 import { HttpClient } from '@angular/common/http';
@@ -34,6 +35,14 @@ export class ApiHandleService {
 
   update(id:any, data:any): Observable<any>{
     return this._http.put(`${this.url}/${id}`, data)
+  }
+
+  create(data: CharacterInterface[]): Observable<any> {
+    return this._http.post(this.url, data);
+  }
+
+  delete(id:any): Observable<any>{
+   return this._http.delete(`${this.url}/${id}`)
   }
 
 

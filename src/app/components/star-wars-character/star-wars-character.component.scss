@@ -1,0 +1,55 @@
+.main{
+    background-image:
+    linear-gradient(to top,rgba(0, 0, 0, 0.425) 0,rgba(0, 0, 0, 0.308) 40%,rgba(0, 0, 0, 0.315) 75%,rgba(17, 17, 17, 0.534) 100%),
+    url('../../../assets/bg.jpg');
+
+ background-size: cover;
+  background-repeat: no-repeat;
+}
+.formContainer{
+  width: 400px;
+  margin: auto;
+
+}
+
+.d-flex{
+  margin-top: 15px;
+}
+
+.cardContainer{
+  display: flex;
+  color: white;
+  flex-wrap: wrap;
+}
+
+.Card{
+  width: 350px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border: 1px solid black;
+  margin: 15px;
+  padding: 25px;
+  background-color: #0000007a;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 5px;
+}
+
+p{
+  margin: 5px;
+}
+
+h1{
+  margin-bottom: 15px;
+}
+
+img{
+  margin:10
+}
+
+.btn{
+  margin: auto;
+}
